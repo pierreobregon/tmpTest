@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14406952553310" configfile="/AWOREApp/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="946" id="pf14419999261319" referenceLink="//@navigationRule.7/@fromViewId|" outlinks="pf144199992613110 pf144199992613111 pf144200049710414 pf14423385727673 pf14424236407160 pf14424236407161 pf14424429164451 pf14425074540471" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/public/configuracionPagina/bienvenidoCliente.xhtml" x="338" y="178" id="pf144199992613112" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf144199992613110" path="pages/private/configFront/bienvenidoCliente.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/public/registro/registroUsuario.xhtml" x="338" y="562" id="pf144199992613113" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf144199992613111" path="pages/public/registro/registroUsuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/public/registro/registroConfirmacion.xhtml" x="338" y="946" id="pf144200049710415" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf144200049710414" path="pages/public/registro/registroConfirmacion.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/private/indexDashboard.xhtml" x="338" y="1330" id="pf14423385727674" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf14423385727673" path="pages/private/indexDashboard.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/private/configFront/seleccionPlantilla.xhtml" x="338" y="1714" id="pf14424236407162" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" inlinks="pf14424236407160" path="pages/private/configFront/seleccionPlantilla.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/private/configFront/configContenidoPagina.xhtml" id="pf14424236407163" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" inlinks="pf14424236407161" path="pages/private/configFront/configContenidoPagina.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/private/configFront/datosComplemento.xhtml" id="pf14424429164452" referenceLink="//@navigationRule.7/@navigationCase.0/@toViewId|" inlinks="pf14424429164451" path="pages/private/configFront/datosComplemento.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/private/configFront/datosTecnicos.xhtml" id="pf14425074540472" referenceLink="//@navigationRule.7/@navigationCase.0/@toViewId|" inlinks="pf14425074540471" path="pages/private/configFront/datosTecnicos.xhtml"/>
+  <links id="pf144199992613110" target="pf144199992613112" source="pf14419999261319" outcome="to_BienvenidoCliente"/>
+  <links id="pf144199992613111" target="pf144199992613113" source="pf14419999261319" outcome="to_RegistroUsuario"/>
+  <links id="pf144200049710414" target="pf144200049710415" source="pf14419999261319" outcome="to_RegistroConfirmacion"/>
+  <links id="pf14423385727673" target="pf14423385727674" source="pf14419999261319" outcome="to_indexDashboard"/>
+  <links id="pf14424236407160" target="pf14424236407162" source="pf14419999261319" outcome="to_seleccionPlantilla"/>
+  <links id="pf14424236407161" target="pf14424236407163" source="pf14419999261319" outcome="to_configContenidoPagina"/>
+  <links id="pf14424429164451" target="pf14424429164452" source="pf14419999261319" outcome="to_datosComplemento"/>
+  <links id="pf14425074540471" target="pf14425074540472" source="pf14419999261319" outcome="to_datosTecnicos"/>
+</pageflow:Pageflow>

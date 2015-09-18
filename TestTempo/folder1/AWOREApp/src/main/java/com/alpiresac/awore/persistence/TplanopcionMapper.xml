@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alpiresac.awore.persistence.TplanopcionMapper" >
+  <resultMap id="BaseResultMap" type="com.alpiresac.awore.domain.Tplanopcion" >
+    <id column="codiOpci" property="codiOpci" jdbcType="VARCHAR" />
+    <result column="nombOpci" property="nombOpci" jdbcType="VARCHAR" />
+    <result column="codiPlan" property="codiPlan" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    codiOpci, nombOpci, codiPlan
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tplanopcion
+    where codiOpci = #{codiOpci,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tplanopcion
+    where codiOpci = #{codiOpci,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.alpiresac.awore.domain.Tplanopcion" >
+    insert into tplanopcion (codiOpci, nombOpci, codiPlan
+      )
+    values (#{codiOpci,jdbcType=VARCHAR}, #{nombOpci,jdbcType=VARCHAR}, #{codiPlan,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.alpiresac.awore.domain.Tplanopcion" >
+    insert into tplanopcion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="codiOpci != null" >
+        codiOpci,
+      </if>
+      <if test="nombOpci != null" >
+        nombOpci,
+      </if>
+      <if test="codiPlan != null" >
+        codiPlan,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="codiOpci != null" >
+        #{codiOpci,jdbcType=VARCHAR},
+      </if>
+      <if test="nombOpci != null" >
+        #{nombOpci,jdbcType=VARCHAR},
+      </if>
+      <if test="codiPlan != null" >
+        #{codiPlan,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alpiresac.awore.domain.Tplanopcion" >
+    update tplanopcion
+    <set >
+      <if test="nombOpci != null" >
+        nombOpci = #{nombOpci,jdbcType=VARCHAR},
+      </if>
+      <if test="codiPlan != null" >
+        codiPlan = #{codiPlan,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where codiOpci = #{codiOpci,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alpiresac.awore.domain.Tplanopcion" >
+    update tplanopcion
+    set nombOpci = #{nombOpci,jdbcType=VARCHAR},
+      codiPlan = #{codiPlan,jdbcType=VARCHAR}
+    where codiOpci = #{codiOpci,jdbcType=VARCHAR}
+  </update>
+</mapper>

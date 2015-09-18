@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alpiresac.awore.persistence.TpagosMapper" >
+  <resultMap id="BaseResultMap" type="com.alpiresac.awore.domain.Tpagos" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="idAplic" property="idAplic" jdbcType="INTEGER" />
+    <result column="fechEmisComp" property="fechEmisComp" jdbcType="DATE" />
+    <result column="fechVctoComp" property="fechVctoComp" jdbcType="DATE" />
+    <result column="fechRegiPagoComp" property="fechRegiPagoComp" jdbcType="DATE" />
+    <result column="fechIniPeri" property="fechIniPeri" jdbcType="DATE" />
+    <result column="fechFinPeri" property="fechFinPeri" jdbcType="DATE" />
+    <result column="nroOper" property="nroOper" jdbcType="VARCHAR" />
+    <result column="mntoPago" property="mntoPago" jdbcType="DECIMAL" />
+    <result column="tipoMone" property="tipoMone" jdbcType="VARCHAR" />
+    <result column="estado" property="estado" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, idAplic, fechEmisComp, fechVctoComp, fechRegiPagoComp, fechIniPeri, fechFinPeri, 
+    nroOper, mntoPago, tipoMone, estado
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tpagos
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tpagos
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.alpiresac.awore.domain.Tpagos" >
+    insert into tpagos (id, idAplic, fechEmisComp, 
+      fechVctoComp, fechRegiPagoComp, fechIniPeri, 
+      fechFinPeri, nroOper, mntoPago, 
+      tipoMone, estado)
+    values (#{id,jdbcType=INTEGER}, #{idAplic,jdbcType=INTEGER}, #{fechEmisComp,jdbcType=DATE}, 
+      #{fechVctoComp,jdbcType=DATE}, #{fechRegiPagoComp,jdbcType=DATE}, #{fechIniPeri,jdbcType=DATE}, 
+      #{fechFinPeri,jdbcType=DATE}, #{nroOper,jdbcType=VARCHAR}, #{mntoPago,jdbcType=DECIMAL}, 
+      #{tipoMone,jdbcType=VARCHAR}, #{estado,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.alpiresac.awore.domain.Tpagos" >
+    insert into tpagos
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="idAplic != null" >
+        idAplic,
+      </if>
+      <if test="fechEmisComp != null" >
+        fechEmisComp,
+      </if>
+      <if test="fechVctoComp != null" >
+        fechVctoComp,
+      </if>
+      <if test="fechRegiPagoComp != null" >
+        fechRegiPagoComp,
+      </if>
+      <if test="fechIniPeri != null" >
+        fechIniPeri,
+      </if>
+      <if test="fechFinPeri != null" >
+        fechFinPeri,
+      </if>
+      <if test="nroOper != null" >
+        nroOper,
+      </if>
+      <if test="mntoPago != null" >
+        mntoPago,
+      </if>
+      <if test="tipoMone != null" >
+        tipoMone,
+      </if>
+      <if test="estado != null" >
+        estado,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="idAplic != null" >
+        #{idAplic,jdbcType=INTEGER},
+      </if>
+      <if test="fechEmisComp != null" >
+        #{fechEmisComp,jdbcType=DATE},
+      </if>
+      <if test="fechVctoComp != null" >
+        #{fechVctoComp,jdbcType=DATE},
+      </if>
+      <if test="fechRegiPagoComp != null" >
+        #{fechRegiPagoComp,jdbcType=DATE},
+      </if>
+      <if test="fechIniPeri != null" >
+        #{fechIniPeri,jdbcType=DATE},
+      </if>
+      <if test="fechFinPeri != null" >
+        #{fechFinPeri,jdbcType=DATE},
+      </if>
+      <if test="nroOper != null" >
+        #{nroOper,jdbcType=VARCHAR},
+      </if>
+      <if test="mntoPago != null" >
+        #{mntoPago,jdbcType=DECIMAL},
+      </if>
+      <if test="tipoMone != null" >
+        #{tipoMone,jdbcType=VARCHAR},
+      </if>
+      <if test="estado != null" >
+        #{estado,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alpiresac.awore.domain.Tpagos" >
+    update tpagos
+    <set >
+      <if test="idAplic != null" >
+        idAplic = #{idAplic,jdbcType=INTEGER},
+      </if>
+      <if test="fechEmisComp != null" >
+        fechEmisComp = #{fechEmisComp,jdbcType=DATE},
+      </if>
+      <if test="fechVctoComp != null" >
+        fechVctoComp = #{fechVctoComp,jdbcType=DATE},
+      </if>
+      <if test="fechRegiPagoComp != null" >
+        fechRegiPagoComp = #{fechRegiPagoComp,jdbcType=DATE},
+      </if>
+      <if test="fechIniPeri != null" >
+        fechIniPeri = #{fechIniPeri,jdbcType=DATE},
+      </if>
+      <if test="fechFinPeri != null" >
+        fechFinPeri = #{fechFinPeri,jdbcType=DATE},
+      </if>
+      <if test="nroOper != null" >
+        nroOper = #{nroOper,jdbcType=VARCHAR},
+      </if>
+      <if test="mntoPago != null" >
+        mntoPago = #{mntoPago,jdbcType=DECIMAL},
+      </if>
+      <if test="tipoMone != null" >
+        tipoMone = #{tipoMone,jdbcType=VARCHAR},
+      </if>
+      <if test="estado != null" >
+        estado = #{estado,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alpiresac.awore.domain.Tpagos" >
+    update tpagos
+    set idAplic = #{idAplic,jdbcType=INTEGER},
+      fechEmisComp = #{fechEmisComp,jdbcType=DATE},
+      fechVctoComp = #{fechVctoComp,jdbcType=DATE},
+      fechRegiPagoComp = #{fechRegiPagoComp,jdbcType=DATE},
+      fechIniPeri = #{fechIniPeri,jdbcType=DATE},
+      fechFinPeri = #{fechFinPeri,jdbcType=DATE},
+      nroOper = #{nroOper,jdbcType=VARCHAR},
+      mntoPago = #{mntoPago,jdbcType=DECIMAL},
+      tipoMone = #{tipoMone,jdbcType=VARCHAR},
+      estado = #{estado,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/pages/private/dashboardTemplate/templateDashboard.xhtml">
+
+	<ui:define name="tittle">
+		EMPRESA<small> Awore Plataform</small>	
+	</ui:define>
+	
+	<ui:define name="navigate">
+		<ul class="breadcrumb">
+									<li>
+										<i class="icon-home"></i>
+										<!-- <a href="index.html">Home</a>-->
+										<p:commandLink action="to_indexDashboard" value="Home" ></p:commandLink> 
+										<i class="icon-angle-right"></i>
+									</li>
+									<li>
+										<a href="#">Extra</a>
+										<i class="icon-angle-right"></i>
+									</li>
+									<li><a href="#">Blank Page</a></li>
+								</ul>
+	</ui:define>
+	<ui:define name="content">
+				<h2><a href="#">¡DASHBOARAD!</a></h2>
+				<p:commandButton action="to_BienvenidoCliente" ajax="false"  styleClass="btn red" value="Bienvenido..." ></p:commandButton>
+				<a href="http://localhost:8081/AWOREApp/pages/indexDispatcher.xhtml?id=1" class="button" >Configura tu espacio</a>
+	</ui:define>
+</ui:composition>
+
+</h:html>

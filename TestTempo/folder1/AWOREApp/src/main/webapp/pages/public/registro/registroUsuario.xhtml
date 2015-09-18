@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:fb="http://www.facebook.com/2008/fbml">
+
+<ui:composition template="/pages/plantillas/0/template0.xhtml">
+	<ui:define name="content">
+		
+		<div class="row 200%">
+			<div class="4u 12u(mobile)" id="sidebar">
+				<section>
+					<header>
+						<h3><a href="#">Beneficios para nuestro clientes</a></h3>
+					</header>
+					<p>
+						Recuerda todos los beneficios ofrecidos por Awore.
+					</p>
+					<div class="row 50%">
+						<div class="4u">
+							<a href="#" class="image fit"><img src="${request.contextPath}/pages/public/_static/images/pic10.jpg" alt="" /></a>
+						</div>
+						<div class="8u">
+							<h4>Variedad2 de plantillas</h4>
+							<p>
+								AWORE nos ofrece multiples plantillas para que las puedas  a tu espacio web en el momento que quieras.
+							</p>
+						</div>
+					</div>
+					<div class="row 50%">
+						<div class="4u">
+							<a href="#" class="image fit"><img src="${request.contextPath}/pages/public/_static/images/pic11.jpg" alt="" /></a>
+						</div>
+						<div class="8u">
+							<h4>Autoadministración</h4>
+							<p>
+								Autoadministra tu espacio facilmente a traves de los formularios interactivos que nos ofrece AWORE.
+							</p>
+						</div>
+					</div>
+					<div class="row 50%">
+						<div class="4u">
+							<a href="#" class="image fit"><img src="${request.contextPath}/pages/public/_static/images/pic12.jpg" alt="" /></a>
+						</div>
+						<div class="8u">
+							<h4>Lorem feugiat magna</h4>
+							<p>
+								Amet nullam fringilla nibh nulla convallis tique ante proin.
+							</p>
+						</div>
+					</div>
+					<div class="row 50%">
+						<div class="4u">
+							<a href="#" class="image fit"><img src="${request.contextPath}/pages/public/_static/images/pic13.jpg" alt="" /></a>
+						</div>
+						<div class="8u">
+							<h4>Sed tempus fringilla</h4>
+							<p>
+								Amet nullam fringilla nibh nulla convallis tique ante proin.
+							</p>
+						</div>
+					</div>
+					<div class="row 50% no-collapse">
+						<div class="4u">
+							<a href="#" class="image fit"><img src="${request.contextPath}/pages/public/_static/images/pic14.jpg" alt="" /></a>
+						</div>
+						<div class="8u">
+							<h4>Malesuada fermentum</h4>
+							<p>
+								Amet nullam fringilla nibh nulla convallis tique ante proin.
+							</p>
+						</div>
+					</div>
+					<footer>
+						<a href="#" class="button">Leer más</a>
+					</footer>
+				</section>
+			</div>
+
+			<div class="8u 12u(mobile) important(mobile)" id="content">
+				<header>
+					<h2 ><a href="#" >Regístrate</a></h2>
+					<p>
+						Ingrese sus datos en el formulario para formar parte de la plataforma AWORE.
+					</p>
+				</header>
+				
+				<p:panelGrid columnClasses="tabla_columnaDer" columns="1" >
+					<p:inputText placeholder="Correo" size="40" title="Ingrese un correo electrónico" ></p:inputText>
+					<p:password placeholder="Contraseña" size="40" title="Ingrese una contraseña" ></p:password>
+					<p:password placeholder="Vuelve a ingresar contraseña" size="40" title="Vuelva a digitar su contraseña" ></p:password>
+					<p:inputText placeholder="Nombres" size="40" title="Ingrese sus nombres" ></p:inputText>
+					<p:inputText placeholder="Apellidos" size="40" title="Ingrese sus Apellidos" ></p:inputText>
+					<p:inputText placeholder="Celular" size="30" title="Ingrese un número de celular" ></p:inputText>
+				</p:panelGrid>
+				<p:commandLink action="to_RegistroConfirmacion" ajax="false" value="Registrar" styleClass="button" ></p:commandLink> <a href="#" class="button">Cancelar</a>
+				<fb:login-button perms="" show-faces="true" width="200" max-rows="1" autologoutlink="true"></fb:login-button>
+				<br/><br/>
+				<p>* Se enviará una notificación al correo electrónico, debe ingresar al link de acceso enviado ó ingresar el código que se autogenera.</p>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+
+</h:html>

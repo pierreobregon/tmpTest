@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alpiresac.awore.persistence.TcontenidoMapper" >
+  <resultMap id="BaseResultMap" type="com.alpiresac.awore.domain.Tcontenido" >
+    <id column="idAplic" property="idAplic" jdbcType="INTEGER" />
+    <id column="codiBloque" property="codiBloque" jdbcType="VARCHAR" />
+    <result column="nombCabeBloque" property="nombCabeBloque" jdbcType="VARCHAR" />
+    <result column="textBloque" property="textBloque" jdbcType="VARCHAR" />
+    <result column="orden" property="orden" jdbcType="INTEGER" />
+    <result column="fechRegi" property="fechRegi" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    idAplic, codiBloque, nombCabeBloque, textBloque, orden, fechRegi
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tcontenido
+    where idAplic = #{idAplic,jdbcType=INTEGER}
+      and codiBloque = #{codiBloque,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from tcontenido
+    where idAplic = #{idAplic,jdbcType=INTEGER}
+      and codiBloque = #{codiBloque,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.alpiresac.awore.domain.Tcontenido" >
+    insert into tcontenido (idAplic, codiBloque, nombCabeBloque, 
+      textBloque, orden, fechRegi
+      )
+    values (#{idAplic,jdbcType=INTEGER}, #{codiBloque,jdbcType=VARCHAR}, #{nombCabeBloque,jdbcType=VARCHAR}, 
+      #{textBloque,jdbcType=VARCHAR}, #{orden,jdbcType=INTEGER}, #{fechRegi,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.alpiresac.awore.domain.Tcontenido" >
+    insert into tcontenido
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idAplic != null" >
+        idAplic,
+      </if>
+      <if test="codiBloque != null" >
+        codiBloque,
+      </if>
+      <if test="nombCabeBloque != null" >
+        nombCabeBloque,
+      </if>
+      <if test="textBloque != null" >
+        textBloque,
+      </if>
+      <if test="orden != null" >
+        orden,
+      </if>
+      <if test="fechRegi != null" >
+        fechRegi,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idAplic != null" >
+        #{idAplic,jdbcType=INTEGER},
+      </if>
+      <if test="codiBloque != null" >
+        #{codiBloque,jdbcType=VARCHAR},
+      </if>
+      <if test="nombCabeBloque != null" >
+        #{nombCabeBloque,jdbcType=VARCHAR},
+      </if>
+      <if test="textBloque != null" >
+        #{textBloque,jdbcType=VARCHAR},
+      </if>
+      <if test="orden != null" >
+        #{orden,jdbcType=INTEGER},
+      </if>
+      <if test="fechRegi != null" >
+        #{fechRegi,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alpiresac.awore.domain.Tcontenido" >
+    update tcontenido
+    <set >
+      <if test="nombCabeBloque != null" >
+        nombCabeBloque = #{nombCabeBloque,jdbcType=VARCHAR},
+      </if>
+      <if test="textBloque != null" >
+        textBloque = #{textBloque,jdbcType=VARCHAR},
+      </if>
+      <if test="orden != null" >
+        orden = #{orden,jdbcType=INTEGER},
+      </if>
+      <if test="fechRegi != null" >
+        fechRegi = #{fechRegi,jdbcType=DATE},
+      </if>
+    </set>
+    where idAplic = #{idAplic,jdbcType=INTEGER}
+      and codiBloque = #{codiBloque,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alpiresac.awore.domain.Tcontenido" >
+    update tcontenido
+    set nombCabeBloque = #{nombCabeBloque,jdbcType=VARCHAR},
+      textBloque = #{textBloque,jdbcType=VARCHAR},
+      orden = #{orden,jdbcType=INTEGER},
+      fechRegi = #{fechRegi,jdbcType=DATE}
+    where idAplic = #{idAplic,jdbcType=INTEGER}
+      and codiBloque = #{codiBloque,jdbcType=VARCHAR}
+  </update>
+</mapper>

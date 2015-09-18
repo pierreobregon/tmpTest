@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:fb="http://www.facebook.com/2008/fbml">
+	<h:head>
+		<title>Awore</title>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="${request.contextPath}/pages/public/_static/assets/css/main.css" />
+		<link rel="stylesheet" href="${request.contextPath}/css/cssApp.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</h:head>
+	<h:body class="no-sidebar">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+					<ui:insert name="header" >
+						<ui:include src="header.xhtml" />
+					</ui:insert>
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<h:form>
+							<ui:insert name="content" >
+						   	</ui:insert>
+					   	</h:form>
+					</div>
+
+				</div>
+
+			<!-- Footer -->
+				<div id="footer">
+					<ui:insert name="footer" >
+						<ui:include src="footer.xhtml" />
+					</ui:insert>
+					
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="${request.contextPath}/pages/public/_static/assets/js/jquery.min.js"></script>
+			<script src="${request.contextPath}/pages/public/_static/assets/js/jquery.dropotron.min.js"></script>
+			<script src="${request.contextPath}/pages/public/_static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="${request.contextPath}/pages/public/_static/assets/js/jquery.onvisible.min.js"></script>
+			<script src="${request.contextPath}/pages/public/_static/assets/js/skel.min.js"></script>
+			<script src="${request.contextPath}/pages/public/_static/assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="${request.contextPath}/pages/_static/assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="${request.contextPath}/pages/public/_static/assets/js/main.js"></script>
+
+	</h:body>
+</h:html>

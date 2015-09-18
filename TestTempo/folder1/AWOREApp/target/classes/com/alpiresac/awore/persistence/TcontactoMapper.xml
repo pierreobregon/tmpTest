@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alpiresac.awore.persistence.TcontactoMapper" >
+  <resultMap id="BaseResultMap" type="com.alpiresac.awore.domain.Tcontacto" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="idAplic" property="idAplic" jdbcType="INTEGER" />
+    <result column="direOficPrinc" property="direOficPrinc" jdbcType="VARCHAR" />
+    <result column="linkMaps" property="linkMaps" jdbcType="VARCHAR" />
+    <result column="tele1" property="tele1" jdbcType="VARCHAR" />
+    <result column="tele2" property="tele2" jdbcType="VARCHAR" />
+    <result column="mail" property="mail" jdbcType="VARCHAR" />
+    <result column="urlWeb" property="urlWeb" jdbcType="VARCHAR" />
+    <result column="urlFace" property="urlFace" jdbcType="VARCHAR" />
+    <result column="urlTweet" property="urlTweet" jdbcType="VARCHAR" />
+    <result column="urlGoogle" property="urlGoogle" jdbcType="VARCHAR" />
+    <result column="estado" property="estado" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, idAplic, direOficPrinc, linkMaps, tele1, tele2, mail, urlWeb, urlFace, urlTweet, 
+    urlGoogle, estado
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tcontacto
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tcontacto
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.alpiresac.awore.domain.Tcontacto" >
+    insert into tcontacto (id, idAplic, direOficPrinc, 
+      linkMaps, tele1, tele2, 
+      mail, urlWeb, urlFace, 
+      urlTweet, urlGoogle, estado
+      )
+    values (#{id,jdbcType=INTEGER}, #{idAplic,jdbcType=INTEGER}, #{direOficPrinc,jdbcType=VARCHAR}, 
+      #{linkMaps,jdbcType=VARCHAR}, #{tele1,jdbcType=VARCHAR}, #{tele2,jdbcType=VARCHAR}, 
+      #{mail,jdbcType=VARCHAR}, #{urlWeb,jdbcType=VARCHAR}, #{urlFace,jdbcType=VARCHAR}, 
+      #{urlTweet,jdbcType=VARCHAR}, #{urlGoogle,jdbcType=VARCHAR}, #{estado,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.alpiresac.awore.domain.Tcontacto" >
+    insert into tcontacto
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="idAplic != null" >
+        idAplic,
+      </if>
+      <if test="direOficPrinc != null" >
+        direOficPrinc,
+      </if>
+      <if test="linkMaps != null" >
+        linkMaps,
+      </if>
+      <if test="tele1 != null" >
+        tele1,
+      </if>
+      <if test="tele2 != null" >
+        tele2,
+      </if>
+      <if test="mail != null" >
+        mail,
+      </if>
+      <if test="urlWeb != null" >
+        urlWeb,
+      </if>
+      <if test="urlFace != null" >
+        urlFace,
+      </if>
+      <if test="urlTweet != null" >
+        urlTweet,
+      </if>
+      <if test="urlGoogle != null" >
+        urlGoogle,
+      </if>
+      <if test="estado != null" >
+        estado,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="idAplic != null" >
+        #{idAplic,jdbcType=INTEGER},
+      </if>
+      <if test="direOficPrinc != null" >
+        #{direOficPrinc,jdbcType=VARCHAR},
+      </if>
+      <if test="linkMaps != null" >
+        #{linkMaps,jdbcType=VARCHAR},
+      </if>
+      <if test="tele1 != null" >
+        #{tele1,jdbcType=VARCHAR},
+      </if>
+      <if test="tele2 != null" >
+        #{tele2,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null" >
+        #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="urlWeb != null" >
+        #{urlWeb,jdbcType=VARCHAR},
+      </if>
+      <if test="urlFace != null" >
+        #{urlFace,jdbcType=VARCHAR},
+      </if>
+      <if test="urlTweet != null" >
+        #{urlTweet,jdbcType=VARCHAR},
+      </if>
+      <if test="urlGoogle != null" >
+        #{urlGoogle,jdbcType=VARCHAR},
+      </if>
+      <if test="estado != null" >
+        #{estado,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alpiresac.awore.domain.Tcontacto" >
+    update tcontacto
+    <set >
+      <if test="idAplic != null" >
+        idAplic = #{idAplic,jdbcType=INTEGER},
+      </if>
+      <if test="direOficPrinc != null" >
+        direOficPrinc = #{direOficPrinc,jdbcType=VARCHAR},
+      </if>
+      <if test="linkMaps != null" >
+        linkMaps = #{linkMaps,jdbcType=VARCHAR},
+      </if>
+      <if test="tele1 != null" >
+        tele1 = #{tele1,jdbcType=VARCHAR},
+      </if>
+      <if test="tele2 != null" >
+        tele2 = #{tele2,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null" >
+        mail = #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="urlWeb != null" >
+        urlWeb = #{urlWeb,jdbcType=VARCHAR},
+      </if>
+      <if test="urlFace != null" >
+        urlFace = #{urlFace,jdbcType=VARCHAR},
+      </if>
+      <if test="urlTweet != null" >
+        urlTweet = #{urlTweet,jdbcType=VARCHAR},
+      </if>
+      <if test="urlGoogle != null" >
+        urlGoogle = #{urlGoogle,jdbcType=VARCHAR},
+      </if>
+      <if test="estado != null" >
+        estado = #{estado,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alpiresac.awore.domain.Tcontacto" >
+    update tcontacto
+    set idAplic = #{idAplic,jdbcType=INTEGER},
+      direOficPrinc = #{direOficPrinc,jdbcType=VARCHAR},
+      linkMaps = #{linkMaps,jdbcType=VARCHAR},
+      tele1 = #{tele1,jdbcType=VARCHAR},
+      tele2 = #{tele2,jdbcType=VARCHAR},
+      mail = #{mail,jdbcType=VARCHAR},
+      urlWeb = #{urlWeb,jdbcType=VARCHAR},
+      urlFace = #{urlFace,jdbcType=VARCHAR},
+      urlTweet = #{urlTweet,jdbcType=VARCHAR},
+      urlGoogle = #{urlGoogle,jdbcType=VARCHAR},
+      estado = #{estado,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

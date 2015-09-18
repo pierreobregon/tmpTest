@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alpiresac.awore.persistence.TcuentaMapper" >
+  <resultMap id="BaseResultMap" type="com.alpiresac.awore.domain.Tcuenta" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="idAplic" property="idAplic" jdbcType="INTEGER" />
+    <result column="descCta" property="descCta" jdbcType="VARCHAR" />
+    <result column="nroCta" property="nroCta" jdbcType="VARCHAR" />
+    <result column="propCtaRef" property="propCtaRef" jdbcType="VARCHAR" />
+    <result column="estado" property="estado" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, idAplic, descCta, nroCta, propCtaRef, estado
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tcuenta
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tcuenta
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.alpiresac.awore.domain.Tcuenta" >
+    insert into tcuenta (id, idAplic, descCta, 
+      nroCta, propCtaRef, estado
+      )
+    values (#{id,jdbcType=INTEGER}, #{idAplic,jdbcType=INTEGER}, #{descCta,jdbcType=VARCHAR}, 
+      #{nroCta,jdbcType=VARCHAR}, #{propCtaRef,jdbcType=VARCHAR}, #{estado,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.alpiresac.awore.domain.Tcuenta" >
+    insert into tcuenta
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="idAplic != null" >
+        idAplic,
+      </if>
+      <if test="descCta != null" >
+        descCta,
+      </if>
+      <if test="nroCta != null" >
+        nroCta,
+      </if>
+      <if test="propCtaRef != null" >
+        propCtaRef,
+      </if>
+      <if test="estado != null" >
+        estado,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="idAplic != null" >
+        #{idAplic,jdbcType=INTEGER},
+      </if>
+      <if test="descCta != null" >
+        #{descCta,jdbcType=VARCHAR},
+      </if>
+      <if test="nroCta != null" >
+        #{nroCta,jdbcType=VARCHAR},
+      </if>
+      <if test="propCtaRef != null" >
+        #{propCtaRef,jdbcType=VARCHAR},
+      </if>
+      <if test="estado != null" >
+        #{estado,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alpiresac.awore.domain.Tcuenta" >
+    update tcuenta
+    <set >
+      <if test="idAplic != null" >
+        idAplic = #{idAplic,jdbcType=INTEGER},
+      </if>
+      <if test="descCta != null" >
+        descCta = #{descCta,jdbcType=VARCHAR},
+      </if>
+      <if test="nroCta != null" >
+        nroCta = #{nroCta,jdbcType=VARCHAR},
+      </if>
+      <if test="propCtaRef != null" >
+        propCtaRef = #{propCtaRef,jdbcType=VARCHAR},
+      </if>
+      <if test="estado != null" >
+        estado = #{estado,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alpiresac.awore.domain.Tcuenta" >
+    update tcuenta
+    set idAplic = #{idAplic,jdbcType=INTEGER},
+      descCta = #{descCta,jdbcType=VARCHAR},
+      nroCta = #{nroCta,jdbcType=VARCHAR},
+      propCtaRef = #{propCtaRef,jdbcType=VARCHAR},
+      estado = #{estado,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alpiresac.awore.persistence.TtipoambienteMapper" >
+  <resultMap id="BaseResultMap" type="com.alpiresac.awore.domain.Ttipoambiente" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="idAplic" property="idAplic" jdbcType="INTEGER" />
+    <result column="nombTipo" property="nombTipo" jdbcType="VARCHAR" />
+    <result column="estado" property="estado" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, idAplic, nombTipo, estado
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from ttipoambiente
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ttipoambiente
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.alpiresac.awore.domain.Ttipoambiente" >
+    insert into ttipoambiente (id, idAplic, nombTipo, 
+      estado)
+    values (#{id,jdbcType=INTEGER}, #{idAplic,jdbcType=INTEGER}, #{nombTipo,jdbcType=VARCHAR}, 
+      #{estado,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.alpiresac.awore.domain.Ttipoambiente" >
+    insert into ttipoambiente
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="idAplic != null" >
+        idAplic,
+      </if>
+      <if test="nombTipo != null" >
+        nombTipo,
+      </if>
+      <if test="estado != null" >
+        estado,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="idAplic != null" >
+        #{idAplic,jdbcType=INTEGER},
+      </if>
+      <if test="nombTipo != null" >
+        #{nombTipo,jdbcType=VARCHAR},
+      </if>
+      <if test="estado != null" >
+        #{estado,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alpiresac.awore.domain.Ttipoambiente" >
+    update ttipoambiente
+    <set >
+      <if test="idAplic != null" >
+        idAplic = #{idAplic,jdbcType=INTEGER},
+      </if>
+      <if test="nombTipo != null" >
+        nombTipo = #{nombTipo,jdbcType=VARCHAR},
+      </if>
+      <if test="estado != null" >
+        estado = #{estado,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alpiresac.awore.domain.Ttipoambiente" >
+    update ttipoambiente
+    set idAplic = #{idAplic,jdbcType=INTEGER},
+      nombTipo = #{nombTipo,jdbcType=VARCHAR},
+      estado = #{estado,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

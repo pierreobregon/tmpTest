@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alpiresac.awore.persistence.TplanMapper" >
+  <resultMap id="BaseResultMap" type="com.alpiresac.awore.domain.Tplan" >
+    <id column="codiPlan" property="codiPlan" jdbcType="VARCHAR" />
+    <result column="descPlan" property="descPlan" jdbcType="VARCHAR" />
+    <result column="costPlan" property="costPlan" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    codiPlan, descPlan, costPlan
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tplan
+    where codiPlan = #{codiPlan,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tplan
+    where codiPlan = #{codiPlan,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.alpiresac.awore.domain.Tplan" >
+    insert into tplan (codiPlan, descPlan, costPlan
+      )
+    values (#{codiPlan,jdbcType=VARCHAR}, #{descPlan,jdbcType=VARCHAR}, #{costPlan,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.alpiresac.awore.domain.Tplan" >
+    insert into tplan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="codiPlan != null" >
+        codiPlan,
+      </if>
+      <if test="descPlan != null" >
+        descPlan,
+      </if>
+      <if test="costPlan != null" >
+        costPlan,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="codiPlan != null" >
+        #{codiPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="descPlan != null" >
+        #{descPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="costPlan != null" >
+        #{costPlan,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alpiresac.awore.domain.Tplan" >
+    update tplan
+    <set >
+      <if test="descPlan != null" >
+        descPlan = #{descPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="costPlan != null" >
+        costPlan = #{costPlan,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where codiPlan = #{codiPlan,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alpiresac.awore.domain.Tplan" >
+    update tplan
+    set descPlan = #{descPlan,jdbcType=VARCHAR},
+      costPlan = #{costPlan,jdbcType=DECIMAL}
+    where codiPlan = #{codiPlan,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/pages/private/dashboardTemplate/templateDashboard.xhtml">
+
+	<ui:define name="tittle">
+		Configuración de Contenido<small>Personalice los datos informativos de su espacio.</small>	
+	</ui:define>
+	
+	<ui:define name="navigate">
+		<ul class="breadcrumb">
+			<li>
+				<i class="icon-home"></i>
+				<p:commandLink action="to_indexDashboard" ajax="false" value="Home" ></p:commandLink> 
+				<i class="icon-angle-right"></i>
+			</li>
+			<li>
+				<a href="#">Configuración de Espacio</a>
+			</li>
+		</ul>
+	</ui:define>
+	<ui:define name="content">
+	
+		<f:event listener="#{configuracionFrontManageBean.preLoadConfigContenidoPagina}" type="preRenderView"></f:event>
+		
+		<p:steps activeIndex="#{configuracionFrontManageBean.configuracionFrontModel.intIndexStep}" styleClass="custom"  >
+		    <p:menuitem value="Selección de Plantilla" />	
+		    <p:menuitem value="Contenido de Página" />
+		    <p:menuitem value="Datos Complementarios" />
+		    <p:menuitem value="Datos Técnicos" />
+		    <p:menuitem value="Confirmación" />
+		</p:steps>
+		<h3 style="margin-top:0">Contenido de Página</h3>
+		<h4>Complemente los bloques agregados por defecto</h4>
+		<hr/>
+		<p:dataGrid value="#{configuracionFrontManageBean.configuracionFrontModel.lstContenido}" var="contenido" 
+					columns="1"  >
+			<div class="portlet box blue">
+				<div class="portlet-title">
+					<h4><i class="icon-reorder"></i>#{contenido.nombCabeBloque}</h4>
+					<div class="tools">
+						<a href="javascript:;" class="collapse"></a>
+						<a href="#portlet-config" data-toggle="modal" class="config"></a>
+						<a href="javascript:;" class="reload"></a>
+						<a href="javascript:;" class="remove"></a>
+					</div>
+				</div>
+				<div class="portlet-body">
+					<blockquote >
+						<p>#{contenido.textBloque}</p>
+					</blockquote>
+					<div style="text-align: right;" >
+						<p:commandLink styleClass="btn" >
+							<i class="m-icon-swapup"></i> Subir
+						</p:commandLink><p:commandLink styleClass="btn" >
+							<i class="m-icon-swapdown"></i> Bajar
+						</p:commandLink>
+					</div>
+				</div>
+			</div>
+		</p:dataGrid>
+		
+		<div style="text-align: left;" >
+			<p:commandLink styleClass="btn blue" >
+				<i class="icon-plus"></i> Agregar Bloque de contenido
+			</p:commandLink>
+		</div>
+		<hr/>
+		<div style="text-align: right;" >
+			<p:commandLink action="to_seleccionPlantilla" styleClass="btn big" style="float:left;" >
+				<i class="m-icon-big-swapleft"></i>Regresar
+			</p:commandLink>
+			<p:commandLink action="to_datosComplemento" styleClass="btn green big" style="float:rigth;" >
+				Continuar<i class="m-icon-big-swapright m-icon-white"></i>
+			</p:commandLink>
+		</div>
+		
+		
+		<!-- Modals -->
+		<div id="portlet-config" class="modal hide">
+			<div class="modal-header">
+				<button data-dismiss="modal" class="close" type="button"></button>
+				<h3>portlet Settings</h3>
+			</div>
+			<div class="modal-body">
+				<p>Here will be a configuration form</p>
+			</div>
+		</div>
+		
+		<style type="text/css">
+		.ui-steps .ui-steps-item {
+		    width: 19.8%;
+		}
+		 
+		.ui-state-highlight {
+		    text-shadow: none !important;
+		}
+		 
+		.ui-steps.custom {
+			text-align: center;
+		    padding: 0 0 0 0;
+		}
+		 
+		.ui-steps.custom .ui-steps-item .ui-menuitem-link {
+		    
+		}
+		 
+		.ui-steps.custom .ui-steps-item .ui-steps-number {
+		   
+		}
+		</style>
+	</ui:define>
+</ui:composition>
+
+</h:html>

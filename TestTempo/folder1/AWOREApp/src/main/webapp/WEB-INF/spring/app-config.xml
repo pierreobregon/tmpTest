@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://mybatis.org/schema/mybatis-spring
+       http://mybatis.org/schema/mybatis-spring.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
+       >
+
+	<!-- Scans the classpath of this application for @Components to deploy as 
+		beans -->
+	<tx:annotation-driven />
+    <context:annotation-config />
+	<context:component-scan base-package="com.alpiresac.awore" />
+	
+
+	<!-- Configures the @Controller programming model -->
+	
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+<!--  		<property name="jndiName" value="jdbc/APP_GRUECO" />  -->
+		<property name="jndiName" value="java:comp/env/jdbc/AWORE" />
+		<property name="resourceRef" value="true" />
+		<property name="lookupOnStartup" value="false" />
+		<property name="cache" value="true" />
+		<property name="proxyInterface" value="javax.sql.DataSource" />
+	</bean>
+	
+	<!-- step 2 sqlSessionFactory -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	  <property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	  <property name="dataSource" ref="dataSource" />
+	</bean>
+ 
+     <!-- step 3 mapper -->
+    <!-- <bean id="mapper" class="org.mybatis.spring.mapper.MapperFactoryBean" >
+        <property name="mapperInterface" value="com.hmkcode.spring.mybatis.mapper.Mapper" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean> -->
+   
+    <mybatis:scan base-package="com.alpiresac.awore.persistence" />
+
+</beans>

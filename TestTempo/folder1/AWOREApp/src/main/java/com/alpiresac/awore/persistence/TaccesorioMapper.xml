@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alpiresac.awore.persistence.TaccesorioMapper" >
+  <resultMap id="BaseResultMap" type="com.alpiresac.awore.domain.Taccesorio" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="nombAcce" property="nombAcce" jdbcType="VARCHAR" />
+    <result column="descAcce" property="descAcce" jdbcType="VARCHAR" />
+    <result column="fechRegi" property="fechRegi" jdbcType="DATE" />
+    <result column="idAplic" property="idAplic" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, nombAcce, descAcce, fechRegi, idAplic
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from taccesorio
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from taccesorio
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.alpiresac.awore.domain.Taccesorio" >
+    insert into taccesorio (id, nombAcce, descAcce, 
+      fechRegi, idAplic)
+    values (#{id,jdbcType=INTEGER}, #{nombAcce,jdbcType=VARCHAR}, #{descAcce,jdbcType=VARCHAR}, 
+      #{fechRegi,jdbcType=DATE}, #{idAplic,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.alpiresac.awore.domain.Taccesorio" >
+    insert into taccesorio
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="nombAcce != null" >
+        nombAcce,
+      </if>
+      <if test="descAcce != null" >
+        descAcce,
+      </if>
+      <if test="fechRegi != null" >
+        fechRegi,
+      </if>
+      <if test="idAplic != null" >
+        idAplic,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="nombAcce != null" >
+        #{nombAcce,jdbcType=VARCHAR},
+      </if>
+      <if test="descAcce != null" >
+        #{descAcce,jdbcType=VARCHAR},
+      </if>
+      <if test="fechRegi != null" >
+        #{fechRegi,jdbcType=DATE},
+      </if>
+      <if test="idAplic != null" >
+        #{idAplic,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alpiresac.awore.domain.Taccesorio" >
+    update taccesorio
+    <set >
+      <if test="nombAcce != null" >
+        nombAcce = #{nombAcce,jdbcType=VARCHAR},
+      </if>
+      <if test="descAcce != null" >
+        descAcce = #{descAcce,jdbcType=VARCHAR},
+      </if>
+      <if test="fechRegi != null" >
+        fechRegi = #{fechRegi,jdbcType=DATE},
+      </if>
+      <if test="idAplic != null" >
+        idAplic = #{idAplic,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alpiresac.awore.domain.Taccesorio" >
+    update taccesorio
+    set nombAcce = #{nombAcce,jdbcType=VARCHAR},
+      descAcce = #{descAcce,jdbcType=VARCHAR},
+      fechRegi = #{fechRegi,jdbcType=DATE},
+      idAplic = #{idAplic,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

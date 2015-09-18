@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alpiresac.awore.persistence.TserviciosMapper" >
+  <resultMap id="BaseResultMap" type="com.alpiresac.awore.domain.Tservicios" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="idAplic" property="idAplic" jdbcType="INTEGER" />
+    <result column="nombServ" property="nombServ" jdbcType="VARCHAR" />
+    <result column="descCortaServ" property="descCortaServ" jdbcType="VARCHAR" />
+    <result column="descDetaServ" property="descDetaServ" jdbcType="VARCHAR" />
+    <result column="fechRegi" property="fechRegi" jdbcType="DATE" />
+    <result column="orden" property="orden" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, idAplic, nombServ, descCortaServ, descDetaServ, fechRegi, orden
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tservicios
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tservicios
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.alpiresac.awore.domain.Tservicios" >
+    insert into tservicios (id, idAplic, nombServ, 
+      descCortaServ, descDetaServ, fechRegi, 
+      orden)
+    values (#{id,jdbcType=INTEGER}, #{idAplic,jdbcType=INTEGER}, #{nombServ,jdbcType=VARCHAR}, 
+      #{descCortaServ,jdbcType=VARCHAR}, #{descDetaServ,jdbcType=VARCHAR}, #{fechRegi,jdbcType=DATE}, 
+      #{orden,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.alpiresac.awore.domain.Tservicios" >
+    insert into tservicios
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="idAplic != null" >
+        idAplic,
+      </if>
+      <if test="nombServ != null" >
+        nombServ,
+      </if>
+      <if test="descCortaServ != null" >
+        descCortaServ,
+      </if>
+      <if test="descDetaServ != null" >
+        descDetaServ,
+      </if>
+      <if test="fechRegi != null" >
+        fechRegi,
+      </if>
+      <if test="orden != null" >
+        orden,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="idAplic != null" >
+        #{idAplic,jdbcType=INTEGER},
+      </if>
+      <if test="nombServ != null" >
+        #{nombServ,jdbcType=VARCHAR},
+      </if>
+      <if test="descCortaServ != null" >
+        #{descCortaServ,jdbcType=VARCHAR},
+      </if>
+      <if test="descDetaServ != null" >
+        #{descDetaServ,jdbcType=VARCHAR},
+      </if>
+      <if test="fechRegi != null" >
+        #{fechRegi,jdbcType=DATE},
+      </if>
+      <if test="orden != null" >
+        #{orden,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alpiresac.awore.domain.Tservicios" >
+    update tservicios
+    <set >
+      <if test="idAplic != null" >
+        idAplic = #{idAplic,jdbcType=INTEGER},
+      </if>
+      <if test="nombServ != null" >
+        nombServ = #{nombServ,jdbcType=VARCHAR},
+      </if>
+      <if test="descCortaServ != null" >
+        descCortaServ = #{descCortaServ,jdbcType=VARCHAR},
+      </if>
+      <if test="descDetaServ != null" >
+        descDetaServ = #{descDetaServ,jdbcType=VARCHAR},
+      </if>
+      <if test="fechRegi != null" >
+        fechRegi = #{fechRegi,jdbcType=DATE},
+      </if>
+      <if test="orden != null" >
+        orden = #{orden,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alpiresac.awore.domain.Tservicios" >
+    update tservicios
+    set idAplic = #{idAplic,jdbcType=INTEGER},
+      nombServ = #{nombServ,jdbcType=VARCHAR},
+      descCortaServ = #{descCortaServ,jdbcType=VARCHAR},
+      descDetaServ = #{descDetaServ,jdbcType=VARCHAR},
+      fechRegi = #{fechRegi,jdbcType=DATE},
+      orden = #{orden,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/pages/private/dashboardTemplate/templateDashboard.xhtml">
+
+	<ui:define name="tittle">
+		Datos Complementarios<small>Datos básicos de su empresa.</small>	
+	</ui:define>
+	
+	<ui:define name="navigate">
+		<ul class="breadcrumb">
+			<li>
+				<i class="icon-home"></i>
+				<p:commandLink action="to_indexDashboard" ajax="false" value="Home" ></p:commandLink> 
+				<i class="icon-angle-right"></i>
+			</li>
+			<li>
+				<a href="#">Configuración de Espacio</a>
+			</li>
+		</ul>
+	</ui:define>
+	<ui:define name="content">
+	
+		<f:event listener="#{configuracionFrontManageBean.preLoadDatosComplementarios}" type="preRenderView"></f:event>
+		
+		<p:steps activeIndex="#{configuracionFrontManageBean.configuracionFrontModel.intIndexStep}" styleClass="custom"  >
+		    <p:menuitem value="Selección de Plantilla" />	
+		    <p:menuitem value="Contenido de Página" />
+		    <p:menuitem value="Datos Complementarios" />
+		    <p:menuitem value="Datos Técnicos" />
+		    <p:menuitem value="Confirmación" />
+		</p:steps>
+		<h3 style="margin-top:0">Datos Complementarios</h3>
+		<h4>Ingrese los datos requeridos al formulario presentado</h4>
+		<hr/>
+	
+		<p:outputLabel value="Nombre Empresa" ></p:outputLabel>
+		<p:inputText style="width:300px;" ></p:inputText>
+		
+		<p:outputLabel value="Eslogan" ></p:outputLabel>
+		<p:inputText style="width:300px;" ></p:inputText>
+		
+		<p:outputLabel value="Fecha Inscripción DNS" ></p:outputLabel>
+		<p:calendar></p:calendar>
+		
+		<hr/>
+		<p:outputLabel value="Logo" ></p:outputLabel>
+		<p:fileUpload mode="simple"></p:fileUpload>
+		
+		<p:outputLabel value="Imagenes Portal" ></p:outputLabel>
+		<p:fileUpload mode="simple" ></p:fileUpload>
+	
+		<hr/>
+		<p:outputLabel value="Nro Cuentas" ></p:outputLabel>
+		<p:dataTable value="#{configuracionFrontManageBean.configuracionFrontModel.lstCuentas}" var="cuenta" >
+			<p:column headerText="Cuenta"><p:outputLabel value="#{cuenta.descCta}" ></p:outputLabel> </p:column>
+			<p:column headerText="Numero de Cta" ><p:outputLabel value="#{cuenta.nroCta}" ></p:outputLabel> </p:column>
+			<p:column headerText="Propietario(Referencial)" ><p:outputLabel value="#{cuenta.propCtaRef}" ></p:outputLabel> </p:column>
+			<p:column headerText="Acciones" style="text-align:center;" width="10%" >
+				<a href="#" ><i class="icon-edit" ></i></a>
+				<a href="#" ><i class="icon-trash" ></i></a>
+			</p:column>
+		</p:dataTable>
+		<p:commandLink styleClass="btn blue" >
+			<i class="icon-plus"></i> Agregar Cuenta
+		</p:commandLink>
+		<hr/>
+		
+		<div style="text-align: right;" >
+			<p:commandLink action="to_configContenidoPagina" styleClass="btn big" style="float:left;" >
+				<i class="m-icon-big-swapleft"></i>Regresar
+			</p:commandLink>
+			<p:commandLink action="to_datosTecnicos" styleClass="btn green big" style="float:rigth;" >
+				Continuar<i class="m-icon-big-swapright m-icon-white"></i>
+			</p:commandLink>
+		</div>
+		
+		<style type="text/css">
+		.ui-steps .ui-steps-item {
+		    width: 19.8%;
+		}
+		 
+		.ui-state-highlight {
+		    text-shadow: none !important;
+		}
+		 
+		.ui-steps.custom {
+			text-align: center;
+		    padding: 0 0 0 0;
+		}
+		 
+		.ui-steps.custom .ui-steps-item .ui-menuitem-link {
+		    
+		}
+		 
+		.ui-steps.custom .ui-steps-item .ui-steps-number {
+		   
+		}
+		</style>
+	</ui:define>
+</ui:composition>
+
+</h:html>

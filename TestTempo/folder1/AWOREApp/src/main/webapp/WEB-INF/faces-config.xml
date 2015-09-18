@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+	version="2.1">
+	<application>
+		<el-resolver>
+			org.springframework.web.jsf.el.SpringBeanFacesELResolver
+		</el-resolver>
+	</application>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>to_BienvenidoCliente</from-outcome>
+			<to-view-id>pages/private/configFront/bienvenidoCliente.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>to_RegistroUsuario</from-outcome>
+			<to-view-id>pages/public/registro/registroUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>to_RegistroConfirmacion</from-outcome>
+			<to-view-id>pages/public/registro/registroConfirmacion.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>to_indexDashboard</from-outcome>
+			<to-view-id>pages/private/indexDashboard.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>to_seleccionPlantilla</from-outcome>
+			<to-view-id>pages/private/configFront/seleccionPlantilla.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>to_configContenidoPagina</from-outcome>
+			<to-view-id>pages/private/configFront/configContenidoPagina.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>to_datosComplemento</from-outcome>
+			<to-view-id>pages/private/configFront/datosComplemento.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>to_datosTecnicos</from-outcome>
+			<to-view-id>pages/private/configFront/datosTecnicos.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	
+	
+	
+	
+</faces-config> 

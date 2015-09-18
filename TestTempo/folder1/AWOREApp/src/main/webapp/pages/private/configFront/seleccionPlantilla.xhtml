@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/pages/private/dashboardTemplate/templateDashboard.xhtml">
+
+	<ui:define name="tittle">
+		Plantillas				<small>Seleccione una plantilla	</small>	
+	</ui:define>
+	
+	<ui:define name="navigate">
+		<ul class="breadcrumb">
+									<li>
+										<i class="icon-home"></i>
+										<p:commandLink action="to_indexDashboard" ajax="false" value="Home" ></p:commandLink>
+										<i class="icon-angle-right"></i>
+									</li>
+									<li>
+										<a href="#">Configuración de Espacio</a>
+									</li>
+								</ul>
+	</ui:define>
+	<ui:define name="content">
+		<f:event listener="#{configuracionFrontManageBean.preLoadSeleccionPlantilla}" type="preRenderView"></f:event>
+		
+		<p:steps activeIndex="#{configuracionFrontManageBean.configuracionFrontModel.intIndexStep}" styleClass="custom"  >
+		    <p:menuitem  value="Selección de Plantilla" />	
+		    <p:menuitem value="Contenido de Página" />
+		    <p:menuitem value="Datos Complementarios" />
+		    <p:menuitem value="Datos Técnicos" />
+		    <p:menuitem value="Confirmación" />
+		</p:steps>
+		<h3 style="margin-top:0">Selección de Plantilla</h3>
+		<h4>Seleccione una plantilla para su espacio web. Recuerde que puede cambiarlo cuando usted guste.</h4>
+		<hr/>
+		<div style="text-align:center;" >
+			<p:button styleClass="btn red-stripe" value="Todos" ></p:button>
+			<p:button styleClass="btn red-stripe" value="Audio" ></p:button>
+			<p:button styleClass="btn red-stripe" value="Deporte" ></p:button>
+		</div>
+		<hr/>
+		<p:dataGrid value="#{configuracionFrontManageBean.configuracionFrontModel.lstPlantilla}" var="plantilla" 
+					columns="1" rows="5" paginator="true"  >
+			<f:facet name="header">
+	           Plantillas Disponibles
+	        </f:facet>
+	         <p:panel header="#{plantilla.nombPlantilla}" style="text-align:center">
+	         	<h:panelGrid columns="2" style="width:100%">
+	                <p:outputLabel value="IMAGEN" ></p:outputLabel>
+	                <h:outputText value="#{plantilla.descPlantilla}" />
+	                <p:commandLink title="Previsualizar">
+	                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+	                </p:commandLink>
+	                <input type="radio" name="rbtSelect" id="rbtSelect" ></input>
+	            </h:panelGrid>
+	        </p:panel>
+		</p:dataGrid>
+		<hr/>
+		<div style="text-align: right;" >
+			<p:commandLink action="to_configContenidoPagina" ajax="false" styleClass="btn green big"  >
+				Continuar<i class="m-icon-big-swapright m-icon-white"></i>
+			</p:commandLink>
+		</div>
+		
+		<style type="text/css">
+		.ui-steps .ui-steps-item {
+		    width: 19.8%;
+		}
+		 
+		.ui-state-highlight {
+		    text-shadow: none !important;
+		}
+		 
+		.ui-steps.custom {
+			text-align: center;
+		    padding: 0 0 0 0;
+		}
+		 
+		.ui-steps.custom .ui-steps-item .ui-menuitem-link {
+		    
+		}
+		 
+		.ui-steps.custom .ui-steps-item .ui-steps-number {
+		   
+		}
+		</style>
+	</ui:define>
+	
+</ui:composition>
+
+</h:html>

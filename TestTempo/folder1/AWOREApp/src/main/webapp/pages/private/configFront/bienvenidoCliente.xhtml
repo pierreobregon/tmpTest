@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<h:html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/pages/private/dashboardTemplate/templateDashboard.xhtml">
+
+	<ui:define name="tittle">
+		Bienvenido				<small>Awore Plataform</small>	
+	</ui:define>
+	
+	<ui:define name="navigate">
+		<ul class="breadcrumb">
+									<li>
+										<i class="icon-home"></i>
+										<p:commandLink action="to_indexDashboard" ajax="false" value="Home" ></p:commandLink> 
+										<i class="icon-angle-right"></i>
+									</li>
+									<li>
+										<a href="#">Extra</a>
+										<i class="icon-angle-right"></i>
+									</li>
+									<li><a href="#">Blank Page</a></li>
+								</ul>
+	</ui:define>
+	<ui:define name="content">
+				<h2><a href="#">¡Felicidades!</a></h2>
+				<p style="text-align: justify;" ><br/>
+				Ya forma parte de la plataforma AWORE, en este espacio UDs son los administradores de su espacio web bajo las plantillas que ofrecemos.<br/>
+				AWORE ha generado el siguiente link de cliente, éste debe ser configurado en tu dirección web(DNS), nuestros asistentes técnicos se comunicaran con UDs para brindarle el apoyo.</p>
+				<h4><a href="#">http://awore.com/AWOREApp/pages/indexDispatch.xhtml?id=AGEU234234ÑLKSDF23434SSRER238978KTF</a></h4>
+				<p >Mientras esto se gestiona...
+				</p>
+				<br/><br/>
+				<p:commandButton action="to_seleccionPlantilla" ajax="false" styleClass="btn red" value="Configura tu espacio" ></p:commandButton>
+	</ui:define>
+</ui:composition>
+
+</h:html>

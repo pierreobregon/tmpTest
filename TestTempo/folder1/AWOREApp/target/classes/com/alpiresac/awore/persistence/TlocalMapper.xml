@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alpiresac.awore.persistence.TlocalMapper" >
+  <resultMap id="BaseResultMap" type="com.alpiresac.awore.domain.Tlocal" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="nombLocal" property="nombLocal" jdbcType="VARCHAR" />
+    <result column="idAplic" property="idAplic" jdbcType="INTEGER" />
+    <result column="direLocal" property="direLocal" jdbcType="VARCHAR" />
+    <result column="Ubigeo" property="ubigeo" jdbcType="VARCHAR" />
+    <result column="linkMaps" property="linkMaps" jdbcType="VARCHAR" />
+    <result column="fechRegi" property="fechRegi" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, nombLocal, idAplic, direLocal, Ubigeo, linkMaps, fechRegi
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tlocal
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tlocal
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.alpiresac.awore.domain.Tlocal" >
+    insert into tlocal (id, nombLocal, idAplic, 
+      direLocal, Ubigeo, linkMaps, 
+      fechRegi)
+    values (#{id,jdbcType=INTEGER}, #{nombLocal,jdbcType=VARCHAR}, #{idAplic,jdbcType=INTEGER}, 
+      #{direLocal,jdbcType=VARCHAR}, #{ubigeo,jdbcType=VARCHAR}, #{linkMaps,jdbcType=VARCHAR}, 
+      #{fechRegi,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.alpiresac.awore.domain.Tlocal" >
+    insert into tlocal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="nombLocal != null" >
+        nombLocal,
+      </if>
+      <if test="idAplic != null" >
+        idAplic,
+      </if>
+      <if test="direLocal != null" >
+        direLocal,
+      </if>
+      <if test="ubigeo != null" >
+        Ubigeo,
+      </if>
+      <if test="linkMaps != null" >
+        linkMaps,
+      </if>
+      <if test="fechRegi != null" >
+        fechRegi,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="nombLocal != null" >
+        #{nombLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="idAplic != null" >
+        #{idAplic,jdbcType=INTEGER},
+      </if>
+      <if test="direLocal != null" >
+        #{direLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="ubigeo != null" >
+        #{ubigeo,jdbcType=VARCHAR},
+      </if>
+      <if test="linkMaps != null" >
+        #{linkMaps,jdbcType=VARCHAR},
+      </if>
+      <if test="fechRegi != null" >
+        #{fechRegi,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alpiresac.awore.domain.Tlocal" >
+    update tlocal
+    <set >
+      <if test="nombLocal != null" >
+        nombLocal = #{nombLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="idAplic != null" >
+        idAplic = #{idAplic,jdbcType=INTEGER},
+      </if>
+      <if test="direLocal != null" >
+        direLocal = #{direLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="ubigeo != null" >
+        Ubigeo = #{ubigeo,jdbcType=VARCHAR},
+      </if>
+      <if test="linkMaps != null" >
+        linkMaps = #{linkMaps,jdbcType=VARCHAR},
+      </if>
+      <if test="fechRegi != null" >
+        fechRegi = #{fechRegi,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alpiresac.awore.domain.Tlocal" >
+    update tlocal
+    set nombLocal = #{nombLocal,jdbcType=VARCHAR},
+      idAplic = #{idAplic,jdbcType=INTEGER},
+      direLocal = #{direLocal,jdbcType=VARCHAR},
+      Ubigeo = #{ubigeo,jdbcType=VARCHAR},
+      linkMaps = #{linkMaps,jdbcType=VARCHAR},
+      fechRegi = #{fechRegi,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

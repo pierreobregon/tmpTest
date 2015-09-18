@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alpiresac.awore.persistence.TtipoplantillaMapper" >
+  <resultMap id="BaseResultMap" type="com.alpiresac.awore.domain.Ttipoplantilla" >
+    <id column="codiTipoPlantilla" property="codiTipoPlantilla" jdbcType="VARCHAR" />
+    <result column="nombPlantilla" property="nombPlantilla" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    codiTipoPlantilla, nombPlantilla
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from ttipoplantilla
+    where codiTipoPlantilla = #{codiTipoPlantilla,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ttipoplantilla
+    where codiTipoPlantilla = #{codiTipoPlantilla,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.alpiresac.awore.domain.Ttipoplantilla" >
+    insert into ttipoplantilla (codiTipoPlantilla, nombPlantilla)
+    values (#{codiTipoPlantilla,jdbcType=VARCHAR}, #{nombPlantilla,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.alpiresac.awore.domain.Ttipoplantilla" >
+    insert into ttipoplantilla
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="codiTipoPlantilla != null" >
+        codiTipoPlantilla,
+      </if>
+      <if test="nombPlantilla != null" >
+        nombPlantilla,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="codiTipoPlantilla != null" >
+        #{codiTipoPlantilla,jdbcType=VARCHAR},
+      </if>
+      <if test="nombPlantilla != null" >
+        #{nombPlantilla,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alpiresac.awore.domain.Ttipoplantilla" >
+    update ttipoplantilla
+    <set >
+      <if test="nombPlantilla != null" >
+        nombPlantilla = #{nombPlantilla,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where codiTipoPlantilla = #{codiTipoPlantilla,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alpiresac.awore.domain.Ttipoplantilla" >
+    update ttipoplantilla
+    set nombPlantilla = #{nombPlantilla,jdbcType=VARCHAR}
+    where codiTipoPlantilla = #{codiTipoPlantilla,jdbcType=VARCHAR}
+  </update>
+</mapper>

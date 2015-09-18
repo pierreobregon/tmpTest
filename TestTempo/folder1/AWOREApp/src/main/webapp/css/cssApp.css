@@ -1,0 +1,8 @@
+.tabla_columnaIzq {
+    text-align: right;
+    padding: 1px 1px 1px 1px;
+}
+.tabla_columnaDer {
+    text-align: left;
+    padding: 1px 1px 1px 1px;
+}
