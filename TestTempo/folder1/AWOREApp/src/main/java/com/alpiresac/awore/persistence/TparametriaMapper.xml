@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alpiresac.awore.persistence.TparametriaMapper" >
+  <resultMap id="BaseResultMap" type="com.alpiresac.awore.domain.Tparametria" >
+    <id column="codi_para" property="codi_para" jdbcType="VARCHAR" />
+    <id column="codi_para_padre" property="codi_para_padre" jdbcType="VARCHAR" />
+    <result column="valo_para" property="valo_para" jdbcType="VARCHAR" />
+    <result column="nomb_para" property="nomb_para" jdbcType="VARCHAR" />
+    <result column="desc_para" property="desc_para" jdbcType="VARCHAR" />
+    <result column="orden" property="orden" jdbcType="INTEGER" />
+    <result column="estado" property="estado" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    codi_para, codi_para_padre, valo_para, nomb_para, desc_para, orden, estado
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tparametria
+    where codi_para = #{codi_para,jdbcType=VARCHAR}
+      and codi_para_padre = #{codi_para_padre,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from tparametria
+    where codi_para = #{codi_para,jdbcType=VARCHAR}
+      and codi_para_padre = #{codi_para_padre,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.alpiresac.awore.domain.Tparametria" >
+    insert into tparametria (codi_para, codi_para_padre, valo_para, 
+      nomb_para, desc_para, orden, 
+      estado)
+    values (#{codi_para,jdbcType=VARCHAR}, #{codi_para_padre,jdbcType=VARCHAR}, #{valo_para,jdbcType=VARCHAR}, 
+      #{nomb_para,jdbcType=VARCHAR}, #{desc_para,jdbcType=VARCHAR}, #{orden,jdbcType=INTEGER}, 
+      #{estado,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.alpiresac.awore.domain.Tparametria" >
+    insert into tparametria
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="codi_para != null" >
+        codi_para,
+      </if>
+      <if test="codi_para_padre != null" >
+        codi_para_padre,
+      </if>
+      <if test="valo_para != null" >
+        valo_para,
+      </if>
+      <if test="nomb_para != null" >
+        nomb_para,
+      </if>
+      <if test="desc_para != null" >
+        desc_para,
+      </if>
+      <if test="orden != null" >
+        orden,
+      </if>
+      <if test="estado != null" >
+        estado,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="codi_para != null" >
+        #{codi_para,jdbcType=VARCHAR},
+      </if>
+      <if test="codi_para_padre != null" >
+        #{codi_para_padre,jdbcType=VARCHAR},
+      </if>
+      <if test="valo_para != null" >
+        #{valo_para,jdbcType=VARCHAR},
+      </if>
+      <if test="nomb_para != null" >
+        #{nomb_para,jdbcType=VARCHAR},
+      </if>
+      <if test="desc_para != null" >
+        #{desc_para,jdbcType=VARCHAR},
+      </if>
+      <if test="orden != null" >
+        #{orden,jdbcType=INTEGER},
+      </if>
+      <if test="estado != null" >
+        #{estado,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alpiresac.awore.domain.Tparametria" >
+    update tparametria
+    <set >
+      <if test="valo_para != null" >
+        valo_para = #{valo_para,jdbcType=VARCHAR},
+      </if>
+      <if test="nomb_para != null" >
+        nomb_para = #{nomb_para,jdbcType=VARCHAR},
+      </if>
+      <if test="desc_para != null" >
+        desc_para = #{desc_para,jdbcType=VARCHAR},
+      </if>
+      <if test="orden != null" >
+        orden = #{orden,jdbcType=INTEGER},
+      </if>
+      <if test="estado != null" >
+        estado = #{estado,jdbcType=CHAR},
+      </if>
+    </set>
+    where codi_para = #{codi_para,jdbcType=VARCHAR}
+      and codi_para_padre = #{codi_para_padre,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alpiresac.awore.domain.Tparametria" >
+    update tparametria
+    set valo_para = #{valo_para,jdbcType=VARCHAR},
+      nomb_para = #{nomb_para,jdbcType=VARCHAR},
+      desc_para = #{desc_para,jdbcType=VARCHAR},
+      orden = #{orden,jdbcType=INTEGER},
+      estado = #{estado,jdbcType=CHAR}
+    where codi_para = #{codi_para,jdbcType=VARCHAR}
+      and codi_para_padre = #{codi_para_padre,jdbcType=VARCHAR}
+  </update>
+  
+</mapper>

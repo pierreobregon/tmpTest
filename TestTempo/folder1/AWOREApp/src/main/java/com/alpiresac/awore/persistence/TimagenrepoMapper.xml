@@ -13,13 +13,14 @@
     <result column="idAplicLogo" property="idAplicLogo" jdbcType="INTEGER" />
     <result column="idAplicImgPortal" property="idAplicImgPortal" jdbcType="INTEGER" />
     <result column="idPagos" property="idPagos" jdbcType="INTEGER" />
+    <result column="idPlantilla" property="idPlantilla" jdbcType="INTEGER" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.alpiresac.awore.domain.Timagenrepo" extends="BaseResultMap" >
     <result column="archImag" property="archImag" jdbcType="LONGVARBINARY" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, rutaImag, estado, fechRegi, idServ, idLocal, idAccesorio, idAmbiente, idAplicLogo, 
-    idAplicImgPortal, idPagos
+    idAplicImgPortal, idPagos, idPlantilla
   </sql>
   <sql id="Blob_Column_List" >
     archImag
@@ -40,13 +41,13 @@
     insert into timagenrepo (id, rutaImag, estado, 
       fechRegi, idServ, idLocal, 
       idAccesorio, idAmbiente, idAplicLogo, 
-      idAplicImgPortal, idPagos, archImag
-      )
+      idAplicImgPortal, idPagos, idPlantilla, 
+      archImag)
     values (#{id,jdbcType=INTEGER}, #{rutaImag,jdbcType=VARCHAR}, #{estado,jdbcType=CHAR}, 
       #{fechRegi,jdbcType=DATE}, #{idServ,jdbcType=INTEGER}, #{idLocal,jdbcType=INTEGER}, 
       #{idAccesorio,jdbcType=INTEGER}, #{idAmbiente,jdbcType=INTEGER}, #{idAplicLogo,jdbcType=INTEGER}, 
-      #{idAplicImgPortal,jdbcType=INTEGER}, #{idPagos,jdbcType=INTEGER}, #{archImag,jdbcType=LONGVARBINARY}
-      )
+      #{idAplicImgPortal,jdbcType=INTEGER}, #{idPagos,jdbcType=INTEGER}, #{idPlantilla,jdbcType=INTEGER}, 
+      #{archImag,jdbcType=LONGVARBINARY})
   </insert>
   <insert id="insertSelective" parameterType="com.alpiresac.awore.domain.Timagenrepo" >
     insert into timagenrepo
@@ -83,6 +84,9 @@
       </if>
       <if test="idPagos != null" >
         idPagos,
+      </if>
+      <if test="idPlantilla != null" >
+        idPlantilla,
       </if>
       <if test="archImag != null" >
         archImag,
@@ -122,6 +126,9 @@
       <if test="idPagos != null" >
         #{idPagos,jdbcType=INTEGER},
       </if>
+      <if test="idPlantilla != null" >
+        #{idPlantilla,jdbcType=INTEGER},
+      </if>
       <if test="archImag != null" >
         #{archImag,jdbcType=LONGVARBINARY},
       </if>
@@ -160,6 +167,9 @@
       <if test="idPagos != null" >
         idPagos = #{idPagos,jdbcType=INTEGER},
       </if>
+      <if test="idPlantilla != null" >
+        idPlantilla = #{idPlantilla,jdbcType=INTEGER},
+      </if>
       <if test="archImag != null" >
         archImag = #{archImag,jdbcType=LONGVARBINARY},
       </if>
@@ -178,6 +188,7 @@
       idAplicLogo = #{idAplicLogo,jdbcType=INTEGER},
       idAplicImgPortal = #{idAplicImgPortal,jdbcType=INTEGER},
       idPagos = #{idPagos,jdbcType=INTEGER},
+      idPlantilla = #{idPlantilla,jdbcType=INTEGER},
       archImag = #{archImag,jdbcType=LONGVARBINARY}
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -192,7 +203,17 @@
       idAmbiente = #{idAmbiente,jdbcType=INTEGER},
       idAplicLogo = #{idAplicLogo,jdbcType=INTEGER},
       idAplicImgPortal = #{idAplicImgPortal,jdbcType=INTEGER},
-      idPagos = #{idPagos,jdbcType=INTEGER}
+      idPagos = #{idPagos,jdbcType=INTEGER},
+      idPlantilla = #{idPlantilla,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectByIdPlantilla" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from timagenrepo
+    where id = #{idPlantilla,jdbcType=INTEGER}
+  </select>
 </mapper>

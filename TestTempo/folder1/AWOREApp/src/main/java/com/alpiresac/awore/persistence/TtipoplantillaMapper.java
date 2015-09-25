@@ -1,5 +1,7 @@
 package com.alpiresac.awore.persistence;
 
+import java.util.List;
+
 import com.alpiresac.awore.domain.Ttipoplantilla;
 
 public interface TtipoplantillaMapper {
@@ -14,4 +16,6 @@ public interface TtipoplantillaMapper {
     int updateByPrimaryKeySelective(Ttipoplantilla record);
 
     int updateByPrimaryKey(Ttipoplantilla record);
+    
+    public List<Ttipoplantilla> selectAll();
 }

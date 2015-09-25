@@ -126,4 +126,12 @@
       estado = #{estado,jdbcType=CHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectByTipo" resultMap="BaseResultMap" parameterType="com.alpiresac.awore.domain.Tplantilla" >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from tplantilla
+    where (#{codiTipoPlantilla,jdbcType=VARCHAR} = '-1' OR codiTipoPlantilla = #{codiTipoPlantilla,jdbcType=VARCHAR} )
+    and estado = #{estado,jdbcType=CHAR}
+  </select>
 </mapper>

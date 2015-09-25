@@ -1,5 +1,7 @@
 package com.alpiresac.awore.persistence;
 
+import java.util.List;
+
 import com.alpiresac.awore.domain.Timagenrepo;
 
 public interface TimagenrepoMapper {
@@ -16,4 +18,8 @@ public interface TimagenrepoMapper {
     int updateByPrimaryKeyWithBLOBs(Timagenrepo record);
 
     int updateByPrimaryKey(Timagenrepo record);
+    
+    List<Timagenrepo> selectByIdPlantilla(Integer idPlantilla);
+    
+    
 }

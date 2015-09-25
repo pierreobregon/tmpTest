@@ -1,9 +1,15 @@
 package com.alpiresac.awore.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Timagenrepo {
-    private Integer id;
+import org.primefaces.model.StreamedContent;
+
+public class Timagenrepo implements Serializable{
+  
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
 
     private String rutaImag;
 
@@ -25,7 +31,11 @@ public class Timagenrepo {
 
     private Integer idPagos;
 
+    private Integer idPlantilla;
+
     private byte[] archImag;
+    
+    private StreamedContent streamedContentImage;
 
     public Integer getId() {
         return id;
@@ -115,6 +125,14 @@ public class Timagenrepo {
         this.idPagos = idPagos;
     }
 
+    public Integer getIdPlantilla() {
+        return idPlantilla;
+    }
+
+    public void setIdPlantilla(Integer idPlantilla) {
+        this.idPlantilla = idPlantilla;
+    }
+
     public byte[] getArchImag() {
         return archImag;
     }
@@ -122,4 +140,14 @@ public class Timagenrepo {
     public void setArchImag(byte[] archImag) {
         this.archImag = archImag;
     }
+
+	public StreamedContent getStreamedContentImage() {
+		return streamedContentImage;
+	}
+
+	public void setStreamedContentImage(StreamedContent streamedContentImage) {
+		this.streamedContentImage = streamedContentImage;
+	}
+    
+    
 }

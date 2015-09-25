@@ -1,7 +1,14 @@
 package com.alpiresac.awore.domain;
 
-public class Tplantilla {
-    private Integer id;
+import java.io.Serializable;
+
+public class Tplantilla extends GenericDetailImageBean implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
 
     private String codiTipoPlantilla;
 

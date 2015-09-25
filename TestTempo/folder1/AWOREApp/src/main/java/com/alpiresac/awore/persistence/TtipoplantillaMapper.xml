@@ -55,4 +55,10 @@
     set nombPlantilla = #{nombPlantilla,jdbcType=VARCHAR}
     where codiTipoPlantilla = #{codiTipoPlantilla,jdbcType=VARCHAR}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap"  >
+    select 'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from ttipoplantilla
+  </select>
+
 </mapper>
