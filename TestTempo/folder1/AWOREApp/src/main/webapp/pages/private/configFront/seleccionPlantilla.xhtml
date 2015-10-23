@@ -24,7 +24,7 @@
 								</ul>
 	</ui:define>
 	<ui:define name="content">
-		<f:event listener="#{configuracionFrontManageBean.preLoadSeleccionPlantilla}" type="preRenderView"></f:event>
+		<f:event listener="#{configuracionFrontManageBean.preLoadSeleccionPlantilla}" type="preRenderComponent"></f:event>
 		
 		<p:steps activeIndex="#{configuracionFrontManageBean.configuracionFrontModel.intIndexStep}" styleClass="custom"  >
 		    <p:menuitem  value="Selección de Plantilla" />	
@@ -37,16 +37,52 @@
 		<h4>Seleccione una plantilla para su espacio web. Recuerde que puede cambiarlo cuando usted guste.</h4>
 		<hr/>
 		<div style="text-align:center;" >
-			<p:button styleClass="btn red-stripe" value="Todos" ></p:button>
-			<p:button styleClass="btn red-stripe" value="Audio" ></p:button>
-			<p:button styleClass="btn red-stripe" value="Deporte" ></p:button>
+			<ui:repeat var="tipoPlantilla" value="#{configuracionFrontManageBean.configuracionFrontModel.lstTipoPlantillas}">
+				<p:commandLink actionListener="#{configuracionFrontManageBean.filtrarPlantillas}" styleClass="btn red-stripe" update=":form1:dtgPlantillas"  >
+					<f:param id="tipoPlantilla" name="tipoPlantilla" value="#{tipoPlantilla.codiTipoPlantilla}" ></f:param>
+					#{tipoPlantilla.nombPlantilla}
+				</p:commandLink> 
+			</ui:repeat>
 		</div>
 		<hr/>
-		<p:dataGrid value="#{configuracionFrontManageBean.configuracionFrontModel.lstPlantilla}" var="plantilla" 
-					columns="1" rows="5" paginator="true"  >
-			<f:facet name="header">
-	           Plantillas Disponibles
-	        </f:facet>
+		<p:dataGrid id="dtgPlantillas" value="#{configuracionFrontManageBean.configuracionFrontModel.lstPlantilla}" var="plantilla" 
+					columns="1" rows="5" paginator="true"   > 
+			<div id="portlet_plantilla_#{plantilla.id}" class="portlet box blue"  > 
+				<div class="portlet-title">
+					<h4><i class="icon-reorder"></i>#{plantilla.nombPlantilla}</h4>
+					<div class="tools">
+						<a href="javascript:;" class="collapse"></a>
+						<a href="#portlet-config" data-toggle="modal" class="config"></a>
+						<a href="javascript:;" class="reload"></a>
+						<a href="javascript:;" class="remove"></a>
+					</div>
+				</div>
+				<div class="portlet-body">
+					<div class="row-fluid" >
+						<div class="span12" >
+							<div class="span3" style="text-align:center;" >
+								<p:graphicImage value="#{configuracionFrontManageBean.imageStream}" cache="false" width="150" >
+									<f:param id="id_param" name="id_param" value="#{plantilla.imageSelect.id}" ></f:param>
+								</p:graphicImage> 
+								
+								<p:commandLink title="Previsualizar">
+				                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+				                </p:commandLink>
+							</div>
+							<div class="span6" >
+								#{plantilla.descPlantilla}
+							</div>
+							<div class="span3" style="text-align:center;" >
+								<p:commandLink styleClass="btn" onclick="$('#portlet_plantilla_#{plantilla.id}').toggleClass('red');" >
+									<f:setPropertyActionListener target="#{configuracionFrontManageBean.configuracionFrontModel.intIdPlantillaSeleccionada}" value="#{plantilla.id}"></f:setPropertyActionListener>
+									Seleccionar
+								</p:commandLink>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	        <!-- 
 	         <p:panel header="#{plantilla.nombPlantilla}" style="text-align:center">
 	         	<h:panelGrid columns="2" style="width:100%">
 	                <p:outputLabel value="IMAGEN" ></p:outputLabel>
@@ -56,7 +92,7 @@
 	                </p:commandLink>
 	                <input type="radio" name="rbtSelect" id="rbtSelect" ></input>
 	            </h:panelGrid>
-	        </p:panel>
+	        </p:panel> -->
 		</p:dataGrid>
 		<hr/>
 		<div style="text-align: right;" >
