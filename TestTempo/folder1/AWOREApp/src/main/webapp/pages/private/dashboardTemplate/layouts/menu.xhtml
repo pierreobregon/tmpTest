@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      >
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:h="http://java.sun.com/jsf/html">
 <ui:composition>
 
+	
 <!-- BEGIN SIDEBAR MENU -->        	
 			<ul>
 				<li>
@@ -13,13 +15,13 @@
 				</li>
 				<li>
 					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-					<form class="sidebar-search">
+					<div class="sidebar-search">
 						<div class="input-box">
 							<a href="javascript:;" class="remove"></a>
 							<input type="text" placeholder="Search..." />				
 							<input type="button" class="submit" value=" " />
 						</div>
-					</form>
+					</div>
 					<!-- END RESPONSIVE QUICK SEARCH FORM -->
 				</li>
 				<li class="start ">
@@ -68,14 +70,16 @@
 					<span class="title">Mis pagos Awore</span>
 					</a>
 				</li>
+				
 				<li class="">
-					<a href="login.html">
-					<i class="icon-user"></i> 
-					<span class="title">Salir</span>
-					</a>
+					<p:commandLink action="#{loginManageBean.logout}" ajax="false" >
+						<i class="icon-user"></i>
+						<span class="title">Salir</span>
+					</p:commandLink>
 				</li>
 			</ul>
 			<!-- END SIDEBAR MENU -->
+	
 			
 </ui:composition>
 </html>

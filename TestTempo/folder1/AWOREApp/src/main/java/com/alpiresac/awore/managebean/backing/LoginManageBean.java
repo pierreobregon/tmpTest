@@ -15,8 +15,9 @@ public class LoginManageBean extends GenericManageBean {
 		return "";
 	}
 	
-	public String logout(ActionEvent actionEvent){
+	public String logout(){
 		this.getSession().invalidate();
 		return "to_login";
 	}
 }
+	
